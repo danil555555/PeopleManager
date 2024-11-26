@@ -5,16 +5,16 @@
     public string Status { get; set; }
     public decimal Balance { get; set; }
     public Guid Id { get; set; }
-    public int Reting { get; set; }
+    public int Rating { get; set; }
 
-    public Person(string name, int age, string status, decimal balance, Guid id, int reting)
+    public Person(string name, int age, string status, decimal balance, Guid id, int rating)
     {
         Name = name;
         Age = age;
         Status = status;
         Balance = balance;
         Id = id;
-        Reting = reting;
+        Rating = rating;
     }
 }
 
@@ -89,7 +89,7 @@ class Programm
             Console.WriteLine($"   Status: {people[i].Status}");
             Console.WriteLine($"   Balance: {people[i].Balance}");
             Console.WriteLine($"   Id: {people[i].Id}");
-            Console.WriteLine($"   Reting: {people[i].Reting}");
+            Console.WriteLine($"   Reting: {people[i].Rating}");
             Console.WriteLine();
         }
         Console.WriteLine("Sucsseccfully.");
@@ -100,9 +100,19 @@ class Programm
             Console.Clear();
             Console.WriteLine("Write name new person: ");
             string name = Console.ReadLine();
+            if (name != null)
+            {
+                Console.WriteLine("Invalid name");
+                return;
+            }
             Console.WriteLine("Write age new person: ");
             int age = int.Parse(Console.ReadLine());
-            Console.WriteLine("Write status new person: ");
+            if (age < 0)
+            {
+                Console.WriteLine("Invalid age");
+                return;
+            }
+            Console.WriteLine("Write status new person: junior/middle/senior/lead/CEO");
             string status = Console.ReadLine();
             var balance = 0m;
             Console.WriteLine("Write reting new person: ");
@@ -118,6 +128,11 @@ class Programm
             Console.WriteLine("==== Update Person ====");
             Console.Write("Write number persone: ");
             int number = int.Parse(Console.ReadLine());
+            if (number < 0 || number > people.Count)
+            {
+                Console.WriteLine("Invalid number");
+                return;
+            }
             var person = people[number - 1];
             Console.Write("New Status: ");
             string consoleStatus = Console.ReadLine();
@@ -130,7 +145,7 @@ class Programm
             Console.WriteLine("Write reting new person:");
             var consoleReting = Console.ReadLine();
             if (consoleReting != "")
-                person.Reting = int.Parse(consoleReting);
+                person.Rating = int.Parse(consoleReting);
             Console.Write("Update successfully.");
         }
         static void DeletePerson()
@@ -139,9 +154,15 @@ class Programm
             Console.WriteLine("==== Delet Person ====");
             Console.Write("Write number persone: ");
             int numberPerson = int.Parse(Console.ReadLine());
+            
+            if (numberPerson < 1 || numberPerson > people.Count)
+            {
+                Console.WriteLine("Invalid number");
+                return;
+            }
+
             people.RemoveAt(numberPerson - 1);
             Console.WriteLine("Person deleted successfully.");
-            
         }
 
         static void SortStatus()
