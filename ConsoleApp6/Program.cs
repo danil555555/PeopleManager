@@ -4,21 +4,27 @@
     public int Age { get; set; }
     public string Status { get; set; }
     public decimal Balance { get; set; }
-    public Person(string name, int age, string status, decimal balance)
+    public Guid Id { get; set; }
+    public int Reting { get; set; }
+
+    public Person(string name, int age, string status, decimal balance, Guid id, int reting)
     {
         Name = name;
         Age = age;
         Status = status;
         Balance = balance;
+        Id = id;
+        Reting = reting;
     }
 }
 
 class Programm
 {
     static List<Person> people = new List<Person>();
+
     static void Main(string[] args)
     {
-        while(true)
+        while (true)
         {
             Console.Clear();
             Console.WriteLine("==== Person manager ====");
@@ -66,6 +72,7 @@ class Programm
                     Console.WriteLine("Invalid choice. Please try again.");
                     break;
             }
+
             Console.WriteLine("\nPress any to continue...");
             Console.ReadKey();
         }
@@ -75,71 +82,79 @@ class Programm
     {
         Console.Clear();
         Console.WriteLine("==== View person ====");
-        for (int i = 0; i < people.Count;i++)
+        for (int i = 0; i < people.Count; i++)
         {
             Console.WriteLine($"{i + 1}. Name: {people[i].Name}");
             Console.WriteLine($"   Age: {people[i].Age}");
             Console.WriteLine($"   Status: {people[i].Status}");
             Console.WriteLine($"   Balance: {people[i].Balance}");
+            Console.WriteLine($"   Id: {people[i].Id}");
+            Console.WriteLine($"   Reting: {people[i].Reting}");
             Console.WriteLine();
         }
         Console.WriteLine("Sucsseccfully.");
-
     }
 
     static void AddPerson()
-    {
-        Console.Clear();
-        Console.WriteLine("Write name new person: ");
-        string name = Console.ReadLine();
-        Console.WriteLine("Write age new person: ");
-        int age = int.Parse(Console.ReadLine());
-        Console.WriteLine("Write status new person: ");
-        string status = Console.ReadLine();
-        var balance = 0m;
-        Person person = new Person(name,age,status,balance);
-        people.Add(person);
-        Console.WriteLine("Person added successfully.");
+        {
+            Console.Clear();
+            Console.WriteLine("Write name new person: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Write age new person: ");
+            int age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Write status new person: ");
+            string status = Console.ReadLine();
+            var balance = 0m;
+            Console.WriteLine("Write reting new person: ");
+            int reting = int.Parse(Console.ReadLine());
+            Person person = new Person(name, age, status, balance, Guid.NewGuid(), reting);
+            people.Add(person);
+            Console.WriteLine("Person added successfully.");
+        }
+
+        static void UpdatePerson()
+        {
+            Console.Clear();
+            Console.WriteLine("==== Update Person ====");
+            Console.Write("Write number persone: ");
+            int number = int.Parse(Console.ReadLine());
+            var person = people[number - 1];
+            Console.Write("New Status: ");
+            string consoleStatus = Console.ReadLine();
+            if (consoleStatus != "")
+                person.Status = consoleStatus;
+            Console.Write("New Balance: ");
+            var consoleBalance = Console.ReadLine();
+            if (consoleBalance != "")
+                person.Balance = int.Parse(consoleBalance);
+            Console.WriteLine("Write reting new person:");
+            var consoleReting = Console.ReadLine();
+            if (consoleReting != "")
+                person.Reting = int.Parse(consoleReting);
+            Console.Write("Update successfully.");
+        }
+        static void DeletePerson()
+        {
+
+        }
+
+        static void SortStatus()
+        {
+
+        }
+
+        static void SortReting()
+        {
+
+        }
+
+        static void ReadDB()
+        {
+            
+        }
+
+        static void WrireDB()
+        {
+
+        }
     }
-
-    static void UpdatePerson()
-    {
-        Console.Clear();
-        Console.WriteLine("==== Update Person ====");
-        Console.Write("Write number persone: ");
-        int number = int.Parse(Console.ReadLine());
-        var person = people[number-1];
-        Console.Write("New Status: ");
-        person.Status = Console.ReadLine();
-        Console.Write("New Balance: ");
-        person.Balance = int.Parse(Console.ReadLine());
-        Console.Write("Update successfully.");
-        
-        
-    }
-
-    static void DeletePerson()
-    {
-
-    }
-
-    static void SortStatus()
-    {
-
-    }
-
-    static void SortReting()
-    {
-
-    }
-
-    static void ReadDB()
-    {
-
-    }
-
-    static void WrireDB()
-    {
-
-    }
-}
