@@ -135,7 +135,13 @@ class Programm
         }
         static void DeletePerson()
         {
-
+            Console.Clear();
+            Console.WriteLine("==== Delet Person ====");
+            Console.Write("Write number persone: ");
+            int numberPerson = int.Parse(Console.ReadLine());
+            people.RemoveAt(numberPerson - 1);
+            Console.WriteLine("Person deleted successfully.");
+            
         }
 
         static void SortStatus()
