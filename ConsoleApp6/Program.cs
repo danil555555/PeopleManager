@@ -74,7 +74,7 @@ class Programm
     static void ViewPerson()
     {
         Console.Clear();
-        Console.WriteLine($"==== View person ====");
+        Console.WriteLine("==== View person ====");
         for (int i = 0; i < people.Count;i++)
         {
             Console.WriteLine($"{i + 1}. Name: {people[i].Name}");
@@ -104,7 +104,18 @@ class Programm
 
     static void UpdatePerson()
     {
-
+        Console.Clear();
+        Console.WriteLine("==== Update Person ====");
+        Console.Write("Write number persone: ");
+        int number = int.Parse(Console.ReadLine());
+        var person = people[number-1];
+        Console.Write("New Status: ");
+        person.Status = Console.ReadLine();
+        Console.Write("New Balance: ");
+        person.Balance = int.Parse(Console.ReadLine());
+        Console.Write("Update successfully.");
+        
+        
     }
 
     static void DeletePerson()
