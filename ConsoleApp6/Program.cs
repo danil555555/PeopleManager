@@ -73,9 +73,18 @@ class Programm
 
     static void ViewPerson()
     {
-        // i am gay123
-        // i am fffff
-        // i am ggggg
+        Console.Clear();
+        Console.WriteLine($"==== View person ====");
+        for (int i = 0; i < people.Count;i++)
+        {
+            Console.WriteLine($"{i + 1}. Name: {people[i].Name}");
+            Console.WriteLine($"   Age: {people[i].Age}");
+            Console.WriteLine($"   Status: {people[i].Status}");
+            Console.WriteLine($"   Balance: {people[i].Balance}");
+            Console.WriteLine();
+        }
+        Console.WriteLine("sucsseccfully");
+
     }
 
     static void AddPerson()
