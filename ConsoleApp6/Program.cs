@@ -73,7 +73,8 @@ class Programm
 
     static void ViewPerson()
     {
-        // i am gay
+        // i am gay123
+        // i am fffff
     }
 
     static void AddPerson()
