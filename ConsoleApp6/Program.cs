@@ -83,7 +83,7 @@ class Programm
             Console.WriteLine($"   Balance: {people[i].Balance}");
             Console.WriteLine();
         }
-        Console.WriteLine("sucsseccfully");
+        Console.WriteLine("Sucsseccfully.");
 
     }
 
