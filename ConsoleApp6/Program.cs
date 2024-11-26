@@ -75,6 +75,7 @@ class Programm
     {
         // i am gay123
         // i am fffff
+        // i am ggggg
     }
 
     static void AddPerson()
