@@ -1,4 +1,6 @@
-﻿class Person
+﻿using System.Security.Cryptography;
+
+class Person
 {
     public string Name { get; set; }
     public int Age { get; set; }
@@ -18,12 +20,13 @@
     }
 }
 
-class Programm
+class Program
 {
     static List<Person> people = new List<Person>();
 
     static void Main(string[] args)
     {
+        Password();
         while (true)
         {
             Console.Clear();
@@ -100,7 +103,7 @@ class Programm
             Console.Clear();
             Console.WriteLine("Write name new person: ");
             string name = Console.ReadLine();
-            if (name != null)
+            if (name == null)
             {
                 Console.WriteLine("Invalid name");
                 return;
@@ -184,4 +187,15 @@ class Programm
         {
 
         }
-    }
+
+        public static void Password()
+        {
+            Console.Write("Enter password: ");
+            var password = Console.ReadLine();
+            if (password != "1234")
+            {
+                Console.WriteLine("Invalid password");
+                return;
+            }
+        }
+}
